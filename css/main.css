@@ -1,0 +1,103 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab&display=swap');
+html, body {
+    height: 100%;
+    margin: 0;
+  }
+#app{
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    top: 0px;
+    height: 100%;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+
+.bg_main_blue{
+    background-color: #8EC5FC;
+    background-image: linear-gradient(62deg, #8EC5FC 0%, #E0C3FC 100%);
+}
+
+.bg_main_red{
+    background-color: #FF9A8B;
+    background-image: linear-gradient(90deg, #FF9A8B 0%, #FF6A88 55%, #FF99AC 100%);    
+}
+
+.box_container{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.box_item_empty{
+    width: 50px;
+}
+
+.box_item{
+    margin: 5px;
+    padding: 10px;
+    font-size: 4em;
+    border: 2px solid #eeeeee;
+    border-radius: 5px;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    height: 90px;
+    width: 90px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: #4e4e4e;
+
+    box-shadow: 5px 5px 17px 1px rgba(0,0,0,0.75);
+    -webkit-box-shadow: 5px 5px 17px 1px rgba(0,0,0,0.75);
+    -moz-box-shadow: 5px 5px 17px 1px rgba(0,0,0,0.75);
+
+    background-color: #dbdbdb;
+    background-image: linear-gradient(62deg, #dbdbdb 0%, #ffffff 100%);
+
+    font-family: 'Roboto Slab', serif;
+}
+.box_item span{
+    color: #4e4e4e;
+/* color: transparent;
+  text-shadow: 2px 2px 3px rgba(255,255,255,0.5);
+  -webkit-background-clip: text;
+     -moz-background-clip: text;
+          background-clip: text; */
+}
+
+.score_container{
+    margin: 5px;
+    padding: 10px;
+    font-size: 4em;
+    border: 2px solid #eeeeee;
+    border-radius: 5px;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: #4e4e4e;
+
+    box-shadow: 5px 5px 17px 1px rgba(0,0,0,0.75);
+-webkit-box-shadow: 5px 5px 17px 1px rgba(0,0,0,0.75);
+-moz-box-shadow: 5px 5px 17px 1px rgba(0,0,0,0.75);
+
+font-family: 'Roboto Slab', serif;
+}
+
+.bg-red{
+    background-color: #ff5d5d;
+}
+
+.bg-blue{
+    background-color: #685dff;
+}
