@@ -2,9 +2,12 @@
 // By Sandy Boy Rosas.
 // October 12, 2021
 
-let phrase2 = "For God so loved the world that he gave his one and only Son";
+// press 2 to move to next level
+
+let words_phrase = [];
 
 const box_limit = 15;
+const page_stage = ['setup', 'getting_started', 'playing'];
 
 function rowParser(data, inputs, reveal_all){
     let main_data = []
@@ -52,14 +55,31 @@ function phraseParser(data, inputs, reveal_all){
     return main_data;
 }
 
+function parseSetup(data){
+    return data.split("\n");
+}
+
 var app = new Vue({
     el: '#app',
     data: {
+        word_phrase_text : '',
+        word_phrase_arr : [],
+        page_stage: page_stage[0],
+        level_position: 0,
         inputs : [],
-        phrase: phraseParser(phrase2, []),
+        phrase: phraseParser('', []),
     },
     methods:{
-
+        onGetStarted: function(){
+            this.page_stage = 'playing';
+        },
+        onSetup: function(){
+            this.page_stage = 'getting_started';
+            this.word_phrase_arr = parseSetup(this.word_phrase_text);
+            let initText = this.word_phrase_arr[this.level_position];
+            this.phrase = phraseParser(initText, []);
+            this.word_phrase_text = initText;
+        }
     }
   });
 
@@ -68,11 +88,18 @@ var app = new Vue({
     var k = e.key.toUpperCase();
     var is_in_input = (app.inputs.find(element => element == k) != undefined) ? true : false;
     if(k == "ENTER"){
-        app.phrase = phraseParser(phrase2, app.inputs, true);
-    }else{
+        app.phrase = phraseParser(app.word_phrase_text, app.inputs, true);
+    }else if(k == "2"){
+        console.log(app.level_position);
+        app.level_position = app.level_position + 1;
+        app.word_phrase_text = app.word_phrase_arr[app.level_position];
+        app.inputs = [];
+        app.phrase = phraseParser(app.word_phrase_text, app.inputs, false);
+    }
+    else{
         if(!is_in_input){
             app.inputs.push(k);
-            app.phrase = phraseParser(phrase2, app.inputs, false);
+            app.phrase = phraseParser(app.word_phrase_text, app.inputs, false);
         }
     }
 };

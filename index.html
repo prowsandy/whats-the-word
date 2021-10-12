@@ -14,7 +14,7 @@
    
     <div id="app" class="bg_main_blue">
         <br>
-         <div v-for="txt in phrase">
+         <div v-for="txt in phrase" v-if="page_stage == 'playing'">
             <div class="box_container">
                 <div v-for="l in txt.key" >
                     <div v-bind:class="{box_item : !l.is_empty, box_item_empty: l.is_empty }">
@@ -23,6 +23,23 @@
                 </div>
             </div>
             <br>
+        </div>
+
+        <div v-if="page_stage == 'getting_started'" class="jumbotron">
+            <center>
+                <h1>GUESS THE WORD/PHRASE</h1>
+                <h3 class="text-muted">Please do not refresh the browser. Data will be lost.</h3>
+                <i>Developed by : Sandy Rosas</i> <br> <br>
+                <button @click="onGetStarted" class="btn btn-info">Get Started</button>
+            </center>
+        </div>
+
+        <div v-if="page_stage == 'setup'">
+            <div class="card card-body">
+                <textarea v-model="word_phrase_text" class="form-control" placeholder="Paste the word/phrase here. One game instance per line. Create as many as you like." cols="30" rows="10"></textarea>
+                <br>
+                <button @click="onSetup" class="btn btn-info">Next</button>
+            </div>
         </div>
       
     </div>
