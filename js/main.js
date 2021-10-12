@@ -72,6 +72,7 @@ var app = new Vue({
     methods:{
         onGetStarted: function(){
             this.page_stage = 'playing';
+            this.inputs = [];
         },
         onSetup: function(){
             this.page_stage = 'getting_started';
@@ -90,11 +91,24 @@ var app = new Vue({
     if(k == "ENTER"){
         app.phrase = phraseParser(app.word_phrase_text, app.inputs, true);
     }else if(k == "2"){
-        console.log(app.level_position);
-        app.level_position = app.level_position + 1;
-        app.word_phrase_text = app.word_phrase_arr[app.level_position];
-        app.inputs = [];
-        app.phrase = phraseParser(app.word_phrase_text, app.inputs, false);
+        if(app.level_position < (app.word_phrase_arr.length - 1)){
+            app.level_position = app.level_position + 1;
+            app.word_phrase_text = app.word_phrase_arr[app.level_position];
+            app.inputs = [];
+            app.phrase = phraseParser(app.word_phrase_text, app.inputs, false);
+        }else{
+            alert("end");
+        }
+        
+    }else if(k == "1"){
+        if(app.level_position != 0){
+            app.level_position = app.level_position - 1;
+            app.word_phrase_text = app.word_phrase_arr[app.level_position];
+            app.inputs = [];
+            app.phrase = phraseParser(app.word_phrase_text, app.inputs, false);
+        }else{
+            alert("Beginning");
+        }
     }
     else{
         if(!is_in_input){
